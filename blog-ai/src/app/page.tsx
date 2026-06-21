@@ -24,7 +24,7 @@ export default function HomePage() {
     <AppShell active="/">
       <PageHeader
         title="개인용 글감 AI"
-        description="결제·멤버십 없이 로컬에서만 사용하는 블로그 글쓰기 도구"
+        description="결제·멤버십 없이 웹에서 사용하는 블로그 글쓰기 도구"
       />
       <div className="px-8 py-6">
         <div className="mb-8 grid gap-4 md:grid-cols-3">
@@ -59,22 +59,24 @@ export default function HomePage() {
         </div>
 
         <div className="mt-10 rounded-2xl bg-zinc-50 p-5 text-sm text-zinc-600">
-          <p className="font-medium text-zinc-900">시작 전 설정</p>
+          <p className="font-medium text-zinc-900">웹 배포 (Vercel)</p>
           <ol className="mt-2 list-decimal space-y-1 pl-5">
             <li>
-              <code className="text-xs">blog-ai/.env.local</code> 파일 생성
+              Vercel에서 이 레포 연결, Root Directory를{" "}
+              <code className="text-xs">blog-ai</code> 로 설정
             </li>
             <li>
+              환경변수:{" "}
               <code className="text-xs">NAVER_CLIENT_ID</code>,{" "}
-              <code className="text-xs">NAVER_CLIENT_SECRET</code> 입력
+              <code className="text-xs">NAVER_CLIENT_SECRET</code>,{" "}
+              <code className="text-xs">OPENAI_API_KEY</code>,{" "}
+              <code className="text-xs">ACCESS_TOKEN</code>
             </li>
-            <li>
-              <code className="text-xs">OPENAI_API_KEY</code> 입력 (AI 글쓰기용)
-            </li>
-            <li>
-              <code className="text-xs">npm run dev</code> 로 로컬 실행
-            </li>
+            <li>Deploy 후 URL 접속 → 접근 토큰 입력</li>
           </ol>
+          <p className="mt-3 text-xs text-zinc-500">
+            자세한 방법은 <code>blog-ai/README.md</code> 참고
+          </p>
         </div>
       </div>
     </AppShell>

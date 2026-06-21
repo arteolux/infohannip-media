@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { AppShell, PageHeader } from "@/components/layout";
+import { useBookmarks } from "@/hooks/use-bookmarks";
 
 type DiscoverResult = {
   query: string;
@@ -12,6 +13,7 @@ type DiscoverResult = {
 };
 
 export default function DiscoverPage() {
+  const { add } = useBookmarks();
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -36,12 +38,8 @@ export default function DiscoverPage() {
     }
   }
 
-  async function bookmark(keyword: string) {
-    await fetch("/api/bookmarks", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ keyword, strategy: "adsense" }),
-    });
+  function bookmark(keyword: string) {
+    add({ keyword, strategy: "adsense" });
     alert(`"${keyword}" 북마크에 저장했습니다.`);
   }
 
